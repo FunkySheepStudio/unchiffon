@@ -9,7 +9,7 @@
   <link href="./css/vuetify.min.css" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
 </head>
 
 <div id="app" />
@@ -25,7 +25,34 @@
 <script>  
   const { createApp, watch, nextTick, toRaw } = Vue
   const { loadModule } = window['vue3-sfc-loader']
-  const vuetify = Vuetify.createVuetify()
+
+  const vuetifyTheme = {
+    dark: false,
+    colors: {
+      background: '#000000',
+      surface: '#000000',
+      primary: '#ff9b09',
+      'primary-darken-1': '#3700B3',
+      secondary: '#03DAC6',
+      'secondary-darken-1': '#018786',
+      error: '#B00020',
+      info: '#2196F3',
+      success: '#4CAF50',
+      warning: '#FB8C00',
+    },
+  }
+
+  const vuetify = Vuetify.createVuetify(
+    {
+      theme: {
+        defaultTheme: 'vuetifyTheme',
+        themes: {
+          vuetifyTheme,
+        },
+      }
+    }
+  )
+
   const { createRouter, createWebHistory, useRoute } = VueRouter
 
   const options = {
@@ -53,6 +80,10 @@
     routes: [
       { path: '/', redirect: { path: "/boutique" } },
       { path: '/boutique', name: 'Boutique', component: () => loadModule('./pages/boutique.vue', options) },
+      { path: '/blog', name: 'Blog', component: () => loadModule('./pages/blog.vue', options) },
+      { path: '/nous-trouver', name: 'Nous trouver', component: () => loadModule('./pages/nous-trouver.vue', options) },
+      { path: '/nous-contacter', name: 'Nous contacter', component: () => loadModule('./pages/nous-contacter.vue', options) },
+      { path: '/a-propos', name: 'A propos', component: () => loadModule('./pages/a-propos.vue', options) },
       { path: '/admin', name: 'Administration', component: () => loadModule('./pages/admin.vue', options) },
       { path: '/:pathMatch(.*)*', redirect: '/' }
     ]
@@ -68,7 +99,11 @@
     template: '<defaultLayout/>'
   })
   .use(store)
-  .use(vuetify)
+  .use(vuetify, {
+    options: {
+      customProperties: true
+    }
+  })
   .use(router)
   .mount('#app')
 </script>

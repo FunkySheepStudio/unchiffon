@@ -1,7 +1,6 @@
 <template>
-  <v-app
-    style="background-color: black; color: white;"
-  >
+  <v-app>
+      <un-menu/>
       <v-main>
         <router-view />
       </v-main>
@@ -10,6 +9,7 @@
 <script>
 module.exports = {
   components: {
+    'un-menu': Vue.defineAsyncComponent( () => loadModule('./components/organisms/un-menu.vue', options)),
   },
   data() {
     return {
@@ -38,6 +38,6 @@ html {
 }
 
 body {
-  font-family: 'Nova Square', sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 </style>
