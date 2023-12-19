@@ -4,12 +4,14 @@
       <v-main>
         <router-view />
       </v-main>
+      <un-social/>
     </v-app>
 </template>
 <script>
 module.exports = {
   components: {
     'un-menu': Vue.defineAsyncComponent( () => loadModule('./components/organisms/un-menu.vue', options)),
+    'un-social': Vue.defineAsyncComponent( () => loadModule('./components/organisms/un-social.vue', options))
   },
   data() {
     return {

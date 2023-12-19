@@ -1,5 +1,7 @@
 <template>
-    <v-app-bar>
+    <v-app-bar
+      :density="$vuetify.display.mobile ? 'compact' : false"
+    >
       <v-spacer/>
         <router-link
           v-for="(menu, i) in menus"
@@ -15,7 +17,11 @@
             <v-icon>
               {{ menu.icon }}
             </v-icon>
-            {{ menu.title }}
+            <template
+              v-if="!$vuetify.display.mobile"
+            >
+              {{ menu.title }}
+            </template>
           </button>
         </router-link>
       <v-spacer/>
