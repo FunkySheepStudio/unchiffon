@@ -1,0 +1,74 @@
+<!doctype html>
+
+<html lang="fr">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Un Chiffon font, font</title>
+  <link rel="icon" type="image/x-icon" href="img/favicon.png">
+  <link href="./css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="./css/vuetify.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet">
+</head>
+
+<div id="app" />
+</html>
+
+<script src="./libs/vue.global.prod.js"></script>
+<script src="./libs/vue3-sfc-loader.js"></script>
+<script src="./libs/vuetify.js"></script>
+<script src="./libs/vue-router.global.js"></script>
+<script src="./libs/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin/></script>
+<script src="./modules/store.js"></script>
+
+<script>  
+  const { createApp, watch, nextTick, toRaw } = Vue
+  const { loadModule } = window['vue3-sfc-loader']
+  const vuetify = Vuetify.createVuetify()
+  const { createRouter, createWebHistory, useRoute } = VueRouter
+
+  const options = {
+    moduleCache: {
+      vue: Vue
+    },
+    async getFile(url) {
+      
+      const res = await fetch(url);
+      if ( !res.ok )
+        throw Object.assign(new Error(res.statusText + ' ' + url), { res });
+      return {
+        getContentData: asBinary => asBinary ? res.arrayBuffer() : res.text(),
+      }
+    },
+    addStyle(textContent) {
+      const style = Object.assign(document.createElement('style'), { textContent });
+      const ref = document.head.getElementsByTagName('style')[0] || null;
+      document.head.insertBefore(style, ref);
+    },
+  }
+
+  const router = createRouter({
+    history: createWebHistory(),
+    routes: [
+      { path: '/', redirect: { path: "/boutique" } },
+      { path: '/boutique', name: 'Boutique', component: () => loadModule('./pages/boutique.vue', options) },
+      { path: '/admin', name: 'Administration', component: () => loadModule('./pages/admin.vue', options) },
+      { path: '/:pathMatch(.*)*', redirect: '/' }
+    ]
+  })
+
+  createApp({
+    components: {
+      'defaultLayout': Vue.defineAsyncComponent( () => loadModule('./layouts/index.vue', options) )
+    },
+    data() {
+      return {}
+    },
+    template: '<defaultLayout/>'
+  })
+  .use(store)
+  .use(vuetify)
+  .use(router)
+  .mount('#app')
+</script>
