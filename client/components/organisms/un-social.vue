@@ -31,7 +31,7 @@
 <style scoped>
 .mdi-instagram
 {
-    color: rgb(var(--v-theme-primary));
+    color: white
 }
 
 .mdi-instagram:hover {
@@ -50,7 +50,7 @@
 
 .mdi-facebook
 {
-    color: rgb(var(--v-theme-primary));    
+    color: white
 }
 
 .mdi-facebook:hover

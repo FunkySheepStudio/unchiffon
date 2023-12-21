@@ -1,22 +1,31 @@
 <template>
     <v-app-bar>
-      <v-spacer/>
-      <router-link
-          v-for="(item, i) in menu"
-          :key="i"
-          :to="item.to"
-          v-slot="{ navigate }"
+      <template v-slot:prepend>
+        <v-app-bar-nav-icon
+          @click.stop="drawer = !drawer"
         >
-          <button
-            class="btn"
-            @click="navigate"
-            role="link"
+          <v-icon
+            v-if="!drawer"
           >
-            {{ item.title }}
-          </button>
-        </router-link>
-      <v-spacer/>
+            mdi-menu
+          </v-icon>
+          <v-icon
+            v-else
+            color="primary"
+          >
+            mdi-close
+          </v-icon>
+        </v-app-bar-nav-icon>
+      </template>
   </v-app-bar>
+  <v-navigation-drawer
+    v-model="drawer"
+    temporary
+  >
+    <v-list
+      :items="menu"
+    ></v-list>
+  </v-navigation-drawer>
 </template>
 <script>
   module.exports = {
@@ -30,6 +39,7 @@
     },
     data() {
       return {
+        drawer: false,
       }
     },
     mounted () {
@@ -59,6 +69,10 @@
   transition: .2s ease;
 }
 
+.btn:hover {
+  color: #1e1e2b;
+}
+
 .btn:hover::before {
   width: 100%;
 }
@@ -75,9 +89,14 @@
   z-index: -1;
 }
 
-.btn:focus{
+.btn:hover::after {
   height: 100%;
-  color: black;
+  transition-delay: 0.2s;
+  color: white;
+}
+
+.btn:focus{
+  color: white;
   background-color: rgb(var(--v-theme-primary));
 }
 </style>

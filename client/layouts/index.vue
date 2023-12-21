@@ -1,6 +1,13 @@
 <template>
   <v-app>
-      <un-menu/>
+      <un-menu-mobile
+        v-if="$vuetify.display.mobile"
+        :menu="menu"
+      />
+      <un-menu
+        v-else
+        :menu="menu"
+      />
       <v-main>
         <router-view />
       </v-main>
@@ -11,10 +18,33 @@
 module.exports = {
   components: {
     'un-menu': Vue.defineAsyncComponent( () => loadModule('./components/organisms/un-menu.vue', options)),
+    'un-menu-mobile': Vue.defineAsyncComponent( () => loadModule('./components/organisms/un-menu-mobile.vue', options)),
     'un-social': Vue.defineAsyncComponent( () => loadModule('./components/organisms/un-social.vue', options))
   },
   data() {
     return {
+      menu: [
+          {
+            title: 'Boutique',
+            to: '/boutique'
+          },
+          {
+            title: 'Blog',
+            to: '/blog'
+          },
+          {
+            title: 'Nous trouver',
+            to: '/nous-trouver'
+          },
+          {
+            title: 'Nous contacter',
+            to: '/nous-contacter'
+          },
+          {
+            title: 'A propos',
+            to: '/a-propos'
+          }
+      ]
     }
   },
   mounted () {
