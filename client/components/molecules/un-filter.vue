@@ -1,86 +1,16 @@
 <template>
     <div
         style="width: 300px;"
+        class="noselect"
     >
-        <div>
-            <v-row>
-                <v-col>
-                    <input
-                        id="femmes"
-                        type="checkbox"
-                    >
-                    <label for="femmes">Femmes</label>
-                </v-col>
-                <v-col>
-                    <input
-                        id="hommes"
-                        type="checkbox"
-                    >
-                    <label for="hommes">Hommes</label>
-                </v-col>
-            </v-row>
-        </div>
-        <div>
-            <v-row>
-                <v-col>
-                    <input
-                        id="sweats"
-                        type="checkbox"
-                    >
-                    <label for="sweats">Sweats</label>
-                </v-col>
-                <v-col>
-                    <input
-                        id="vestes"
-                        type="checkbox"
-                    >
-                    <label for="vestes">Vestes</label>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col>
-                    <input
-                        id="blousons"
-                        type="checkbox"
-                    >
-                    <label for="blousons">Blousons</label>
-                </v-col>
-                <v-col>
-                    <input
-                        id="chapeaux"
-                        type="checkbox"
-                    >
-                    <label for="chapeaux">chapeaux</label>
-                </v-col>
-            </v-row>
-            <v-row>
-                <v-col>
-                    <input
-                        id="noeuds-papillons"
-                        type="checkbox"
-                    >
-                    <label for="noeuds-papillons">Noeuds papillons</label>
-                </v-col>
-            </v-row>
-        </div>
-        <div>
-            <v-row>
-                <v-col>
-                    <input
-                        id="sacs"
-                        type="checkbox"
-                    >
-                    <label for="sacs">Sacs</label>
-                </v-col>
-                <v-col>
-                    <input
-                        id="pochettes"
-                        type="checkbox"
-                    >
-                    <label for="pochettes">Pochettes</label>
-                </v-col>
-            </v-row>
-        </div>
+            <label class="choice">
+                <input type="checkbox" value="1">
+                <span>Femme</span>
+            </label>
+            <label class="choice">
+                <input type="checkbox" value="1">
+                <span>Homme</span>
+            </label>
     </div>
 </template>
 <script>
@@ -94,4 +24,63 @@
   }
 </script>
 <style>
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+.choice span {
+  font-size: 17px;
+  background: transparent;
+  border: none;
+  padding: 1em 1.5em;
+  color: white;
+  text-transform: uppercase;
+  position: relative;
+  transition: .5s ease;
+}
+
+.choice span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background-color: rgb(var(--v-theme-primary));
+  transition: .2s ease;
+}
+
+.choice span:hover::before {
+  width: 100%;
+}
+
+.choice span::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 0;
+  width: 100%;
+  background-color: rgb(var(--v-theme-primary));
+  transition: .4s ease;
+  z-index: -1;
+}
+
+.choice input
+{
+    visibility: hidden;
+}
+
+.choice input:checked + span {
+    background-color: rgb(var(--v-theme-primary));
+    transition: .4s ease;
+    z-index: 0;
+}
+
 </style>
