@@ -1,5 +1,4 @@
 <template>
-  Boutique
   <un-filter/>
 </template>
 <script>

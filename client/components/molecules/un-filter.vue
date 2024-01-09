@@ -78,6 +78,7 @@
 }
 
 .choice input:checked + span {
+    color: black;
     background-color: rgb(var(--v-theme-primary));
     transition: .4s ease;
     z-index: 0;
