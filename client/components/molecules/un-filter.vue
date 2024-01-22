@@ -43,6 +43,7 @@
   text-transform: uppercase;
   position: relative;
   transition: .5s ease;
+  padding: 5px;
 }
 
 .choice span::before {
