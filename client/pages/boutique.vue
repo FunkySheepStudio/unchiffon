@@ -1,5 +1,7 @@
 <template>
-  <un-filter/>
+  <un-filter
+    v-if="!$vuetify.display.mobile"
+  />
   <un-results/>
 </template>
 <script>

@@ -1,7 +1,11 @@
 <template>
-    <v-row>
-      <v-col>
-        <div
+  <v-container
+    class="fill-height"
+  >
+    <v-row
+      class="justify-center align-center"
+    >
+    <div
           class="product"
           style="background-image: url('/img/products/Sweat-retro-molleton-jaune-bleu-upcycle-made-in-france-un-chiffon-1.png');"
         >
@@ -11,8 +15,8 @@
             <b>Sweat - Vintage</b>
           </div>
         </div>
-      </v-col>
-      <v-col>
+      
+      
         <div
           class="product"
           style="background-image: url('/img/products/Veste-minimaliste-Terracota-127x10-1.jpg');"
@@ -23,8 +27,8 @@
             <b>Veste - Minimaliste</b>
           </div>
         </div>
-      </v-col>
-      <v-col>
+      
+      
         <div
           class="product"
           style="background-image: url('/img/products/Sweat-retro-molleton-jaune-bleu-upcycle-made-in-france-un-chiffon-1.png');"
@@ -35,8 +39,8 @@
             <b>Sweat - Vintage</b>
           </div>
         </div>
-      </v-col>
-      <v-col>
+      
+      
         <div
           class="product"
           style="background-image: url('/img/products/Veste-minimaliste-Terracota-127x10-1.jpg');"
@@ -47,8 +51,8 @@
             <b>Veste - Minimaliste</b>
           </div>
         </div>
-      </v-col>
-      <v-col>
+      
+      
         <div
           class="product"
           style="background-image: url('/img/products/Sweat-retro-molleton-jaune-bleu-upcycle-made-in-france-un-chiffon-1.png');"
@@ -59,8 +63,8 @@
             <b>Sweat - Vintage</b>
           </div>
         </div>
-      </v-col>
-      <v-col>
+      
+      
         <div
           class="product"
           style="background-image: url('/img/products/Veste-minimaliste-Terracota-127x10-1.jpg');"
@@ -71,8 +75,8 @@
             <b>Veste - Minimaliste</b>
           </div>
         </div>
-      </v-col>
     </v-row>
+  </v-container>
 </template>
 <script>
   module.exports = {
@@ -95,5 +99,6 @@
   border-radius: 10px;
   background-size: 300px;
   padding: 5px;
+  margin: 5px;
 }
 </style>
