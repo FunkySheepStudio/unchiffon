@@ -1,17 +1,18 @@
 <template>
-    <div
-        style="width: 300px;"
-        class="noselect"
-    >
-            <label class="choice">
-                <input type="checkbox" value="1">
-                <span>Femme</span>
-            </label>
-            <label class="choice">
-                <input type="checkbox" value="1">
-                <span>Homme</span>
-            </label>
-    </div>
+    <v-navigation-drawer>
+      <div
+          class="noselect"
+      >
+              <label class="choice">
+                  <input type="checkbox" value="1">
+                  <span>Femme</span>
+              </label>
+              <label class="choice">
+                  <input type="checkbox" value="1">
+                  <span>Homme</span>
+              </label>
+      </div>
+    </v-navigation-drawer>
 </template>
 <script>
   module.exports = {
@@ -38,7 +39,6 @@
   font-size: 17px;
   background: transparent;
   border: none;
-  padding: 1em 1.5em;
   color: white;
   text-transform: uppercase;
   position: relative;

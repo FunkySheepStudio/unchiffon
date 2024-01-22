@@ -1,5 +1,7 @@
 <template>
-    <v-app-bar>
+    <v-app-bar
+      elevation="0"
+    >
       <v-spacer/>
       <router-link
           v-for="(item, i) in menu"
