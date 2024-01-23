@@ -1,14 +1,14 @@
 <template>
   <v-app>
-      <un-menu-mobile
-        v-if="$vuetify.display.mobile"
-        :menu="menu"
-      />
-      <un-menu
-        v-else
-        :menu="menu"
-      />
       <v-main>
+        <un-menu-mobile
+          v-if="$vuetify.display.mobile"
+          :menu="menu"
+        />
+        <un-menu
+          v-else
+          :menu="menu"
+        />
         <router-view />
       </v-main>
       <un-social/>

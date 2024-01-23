@@ -1,104 +1,49 @@
 <template>
+  <v-dialog
+    v-model="showDetail"
+  >
+    <un-product-detail/>
+  </v-dialog>
   <v-container
     class="fill-height"
   >
     <v-row
       class="justify-center align-center"
     >
-    <div
-          class="product"
-          style="background-image: url('/img/products/Sweat-retro-molleton-jaune-bleu-upcycle-made-in-france-un-chiffon-1.png');"
-        >
-          <div
-            style="background-color: black;"
-          >
-            <b>Sweat - Vintage</b>
-          </div>
-        </div>
-      
-      
-        <div
-          class="product"
-          style="background-image: url('/img/products/Veste-minimaliste-Terracota-127x10-1.jpg');"
-        >
-          <div
-            style="background-color: black;"
-          >
-            <b>Veste - Minimaliste</b>
-          </div>
-        </div>
-      
-      
-        <div
-          class="product"
-          style="background-image: url('/img/products/Sweat-retro-molleton-jaune-bleu-upcycle-made-in-france-un-chiffon-1.png');"
-        >
-          <div
-            style="background-color: black;"
-          >
-            <b>Sweat - Vintage</b>
-          </div>
-        </div>
-      
-      
-        <div
-          class="product"
-          style="background-image: url('/img/products/Veste-minimaliste-Terracota-127x10-1.jpg');"
-        >
-          <div
-            style="background-color: black;"
-          >
-            <b>Veste - Minimaliste</b>
-          </div>
-        </div>
-      
-      
-        <div
-          class="product"
-          style="background-image: url('/img/products/Sweat-retro-molleton-jaune-bleu-upcycle-made-in-france-un-chiffon-1.png');"
-        >
-          <div
-            style="background-color: black;"
-          >
-            <b>Sweat - Vintage</b>
-          </div>
-        </div>
-      
-      
-        <div
-          class="product"
-          style="background-image: url('/img/products/Veste-minimaliste-Terracota-127x10-1.jpg');"
-        >
-          <div
-            style="background-color: black;"
-          >
-            <b>Veste - Minimaliste</b>
-          </div>
-        </div>
+        <un-product-card
+          v-for="item in items"
+          @click="selectedItem = item"
+        />
     </v-row>
   </v-container>
 </template>
 <script>
   module.exports = {
+    components: {
+      'un-product-card': Vue.defineAsyncComponent( () => loadModule('./components/atoms/un-product-card.vue', options)),
+      'un-product-detail': Vue.defineAsyncComponent( () => loadModule('./components/atoms/un-product-detail.vue', options))
+    },
     data() {
       return {
+        items: [
+          1, 2, 3, 4, 5
+        ],
+        selectedItem: null
       }
     },
     mounted () {
+    },
+    computed: {
+      showDetail: {
+        get: function() {
+          return this.selectedItem !== null
+        },
+        set: function(newValue) {
+          this.selectedItem = null
+        }
+      }
     }
   }
 </script>
 <style>
-.product{
-  width: 300px;
-  height: 300px;
-  text-align: center;
-
-  color: #ff9b09;
-  border-style: solid;
-  border-radius: 10px;
-  background-size: 300px;
-  padding: 5px;
-  margin: 5px;
-}
 </style>

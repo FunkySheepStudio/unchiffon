@@ -1,5 +1,8 @@
 <template>
-    <v-navigation-drawer>
+    <v-navigation-drawer
+      width="200"
+      style="border-style: solid; border-color: white;"
+    >
       <div
           class="noselect"
       >
